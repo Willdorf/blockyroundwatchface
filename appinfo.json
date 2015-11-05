@@ -1,8 +1,8 @@
 {
 	"uuid": "a1bf5c01-a71c-41df-9470-6725021726dc",
-	"shortName": "blockyround",
-	"longName": "blockyround",
-	"companyName": "MakeAwesomeHappen",
+	"shortName": "Blocky Round",
+	"longName": "Blocky",
+	"companyName": "Willdorf",
 	"versionLabel": "1.0",
 	"sdkVersion": "3",
 	"targetPlatforms": ["basalt"],
