@@ -407,7 +407,7 @@ static void window_load(Window *window) {
 
 	if (persist_read_int(KEY_BACKGROUND_COLOR)) {
 		background_color = GColorFromHEX(persist_read_int(KEY_BACKGROUND_COLOR));
-		window_set_background_color(window, GColorFromHEX(persist_read_int(KEY_BACKGROUND_COLOR)));
+		window_set_background_color(window, background_color);
 	} else {
 		background_color = GColorWhite;
 	}
