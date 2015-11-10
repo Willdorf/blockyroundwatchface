@@ -86,11 +86,6 @@ static void update_time(struct tm *tick_time) {
 	s_hour = tick_time->tm_hour;
 	s_min = tick_time->tm_min;
 	s_sec = tick_time->tm_sec;
-	layer_mark_dirty(s_layer);
-}
-
-static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
-	update_time(tick_time);
 
 	static char buffer[] = "00";
 
@@ -103,6 +98,12 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 	static char date_buffer[20];
 	strftime(date_buffer, sizeof(date_buffer), "%x", tick_time);
 	text_layer_set_text(s_date_layer, date_buffer);
+
+	layer_mark_dirty(s_layer);
+}
+
+static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
+	update_time(tick_time);
 }
 
 static void setup_blocks() {
@@ -466,6 +467,9 @@ static void inbox_received_handler(DictionaryIterator *iter, void *context) {
 		persist_write_int(KEY_BLOCK_TWELVE_COLOR, c);
 		blockTwelveColor = GColorFromHEX(c);
 	}
+
+	time_t start_time = time(NULL);
+	update_time(localtime(&start_time));
 }
 
 static void window_load(Window *window) {
